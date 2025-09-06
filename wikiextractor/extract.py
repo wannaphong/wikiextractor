@@ -45,7 +45,8 @@ knownNamespaces = set(['Template'])
 #
 discardElements = [
     'gallery', 'timeline', 'noinclude', 'pre',
-    'table', 'tr', 'td', 'th', 'caption', 'div',
+    # 'table', 'tr', 'td', 'th',
+	'caption', 'div',
     'form', 'input', 'select', 'option', 'textarea',
     'ul', 'li', 'ol', 'dl', 'dt', 'dd', 'menu', 'dir',
     'ref', 'references', 'img', 'imagemap', 'source', 'small'
@@ -154,11 +155,11 @@ def clean(extractor, text, expand_templates=False, html_safe=True):
         text = unescape(text)
 
     # Expand placeholders
-    for pattern, placeholder in placeholder_tag_patterns:
-        index = 1
-        for match in pattern.finditer(text):
-            text = text.replace(match.group(), '%s_%d' % (placeholder, index))
-            index += 1
+    # for pattern, placeholder in placeholder_tag_patterns:
+    #     index = 1
+    #     for match in pattern.finditer(text):
+    #         text = text.replace(match.group(), '%s_%d' % (placeholder, index))
+    #         index += 1
 
     text = text.replace('<<', u'«').replace('>>', u'»')
 
